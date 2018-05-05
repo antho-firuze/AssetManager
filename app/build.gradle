@@ -8,8 +8,8 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.firuze.ahmad.assetmanager"
-        minSdkVersion 23
-        targetSdkVersion 27
+        minSdkVersion 15
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -30,4 +30,15 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //Anko
+    implementation "org.jetbrains.anko:anko:$anko_version"
+    //Anko Layouts
+    implementation "org.jetbrains.anko:anko-sdk25:$anko_version"
+    implementation "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
+    //Coroutine listeners for Anko Layouts
+    implementation "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
+    implementation "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
+    //For snackbars
+    implementation "org.jetbrains.anko:anko-design:$anko_version"
+    implementation "com.android.support:design:27.1.1"
 }
