@@ -1,4 +1,4 @@
-package com.firuze.ahmad.assetmanager.models
+package com.simpletech.simpleassets.models
 
 import io.realm.RealmObject
 import java.util.*

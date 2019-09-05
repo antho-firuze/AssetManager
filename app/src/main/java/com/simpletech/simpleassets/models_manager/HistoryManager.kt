@@ -1,6 +1,6 @@
-package com.firuze.ahmad.assetmanager.models_manager
+package com.simpletech.simpleassets.models_manager
 
-import com.firuze.ahmad.assetmanager.models.History
+import com.simpletech.simpleassets.models.History
 import io.realm.Realm
 import io.realm.kotlin.where
 import org.json.JSONArray

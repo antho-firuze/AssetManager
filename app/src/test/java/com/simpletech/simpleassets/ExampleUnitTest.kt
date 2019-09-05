@@ -1,4 +1,4 @@
-package com.firuze.ahmad.assetmanager
+package com.simpletech.simpleassets
 
 import org.junit.Test
 

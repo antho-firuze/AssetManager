@@ -1,4 +1,4 @@
-package com.firuze.ahmad.assetmanager
+package com.simpletech.simpleassets
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

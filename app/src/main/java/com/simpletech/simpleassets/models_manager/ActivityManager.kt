@@ -1,6 +1,6 @@
-package com.firuze.ahmad.assetmanager.models_manager
+package com.simpletech.simpleassets.models_manager
 
-import com.firuze.ahmad.assetmanager.models.Category
+import com.simpletech.simpleassets.models.Activity
 import io.realm.Realm
 import io.realm.kotlin.where
 import org.json.JSONArray
@@ -11,28 +11,28 @@ import java.io.IOException
  * Created by antho.firuze@gmail.com on 2018-07-26.
  */
  
-class CategoryManager {
+class ActivityManager {
     val realm: Realm = Realm.getDefaultInstance()
 
-    fun find(): Category? {
-        return realm.where<Category>().findFirst()
+    fun find(): Activity? {
+        return realm.where<Activity>().findFirst()
     }
 
-    fun findById(id: Long): Category? {
-        return realm.where<Category>().equalTo("id", id).findFirst()
+    fun findById(id: Long): Activity? {
+        return realm.where<Activity>().equalTo("id", id).findFirst()
     }
 
-    fun findAll(): List<Category> {
-        return realm.where<Category>().findAll()
+    fun findAll(): List<Activity> {
+        return realm.where<Activity>().findAll()
     }
 
     fun insertFromJson(j: JSONObject) {
-        realm.executeTransaction { realm -> realm.createObjectFromJson(Category::class.java, j) }
+        realm.executeTransaction { realm -> realm.createObjectFromJson(Activity::class.java, j) }
     }
 
     fun insertFromJsonList(j: JSONArray) {
         try {
-            realm.executeTransaction { realm -> realm.createAllFromJson(Category::class.java, j) }
+            realm.executeTransaction { realm -> realm.createAllFromJson(Activity::class.java, j) }
         } catch (e: IOException) {
             if (realm.isInTransaction) {
                 realm.cancelTransaction()
@@ -45,7 +45,7 @@ class CategoryManager {
 
     fun deleteById(id: Long) {
         realm.beginTransaction()
-        val results = realm.where(Category::class.java!!).equalTo("id", id).findAll()
+        val results = realm.where(Activity::class.java!!).equalTo("id", id).findAll()
         results.deleteAllFromRealm()
         realm.commitTransaction()
     }

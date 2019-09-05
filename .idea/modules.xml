@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AssetManager.iml" filepath="$PROJECT_DIR$/AssetManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app.simpletech.simpleassets.iml" filepath="$PROJECT_DIR$/app.simpletech.simpleassets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.simpletech.simpleassets-app.iml" filepath="$PROJECT_DIR$/app/app.simpletech.simpleassets-app.iml" />
     </modules>
   </component>
 </project>

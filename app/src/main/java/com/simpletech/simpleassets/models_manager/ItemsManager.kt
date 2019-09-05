@@ -1,6 +1,6 @@
-package com.firuze.ahmad.assetmanager.models_manager
+package com.simpletech.simpleassets.models_manager
 
-import com.firuze.ahmad.assetmanager.models.Items
+import com.simpletech.simpleassets.models.Items
 import io.realm.Realm
 import io.realm.kotlin.where
 import org.json.JSONArray

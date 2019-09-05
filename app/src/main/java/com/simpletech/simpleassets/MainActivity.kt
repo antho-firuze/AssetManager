@@ -1,11 +1,11 @@
-package com.firuze.ahmad.assetmanager.activities
+package com.simpletech.simpleassets
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.firuze.ahmad.assetmanager.R
+import com.simpletech.simpleassets.R
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
