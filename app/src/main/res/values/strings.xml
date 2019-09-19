@@ -1,22 +1,24 @@
 <resources>
     <string name="app_name">Simple Assets</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_activity_basic">BasicActivity</string>
-    <string name="title_category">Category</string>
-    <string name="title_history">History</string>
-    <string name="title_value">Value</string>
 
-    <string name="nav_drawer_open">Open navigation drawer</string>
-    <string name="nav_drawer_close">Close navigation drawer</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="on_progress">On Progress...</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_main3">Main3Activity</string>
-    <string name="title_activity_main4">Main4Activity</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyCbNPy5hqDEQFNNRXXXXXXXXXXXXXXXXXXX
+    </string>
+
+    <string name="step_of">Step %1$d of %2$d</string>
+    <string name="section_format">Section : %1$d</string>
+
+    <string name="about_text">The best android implementation of material UI components. This app implemented based on Google Design Guidelines.
+    </string>
+    <string name="data_empty">Nothing to show !</string>
+    <string name="data_empty_brief">Please push button (+) in the bottom</string>
+    <string name="premium_plan">Premium plan allows You to store all data safely in cloud. With paid subscription there are no ads too \n\n Try it for free</string>
+    <string name="remove_ads">More space in your application, no more ads!</string>
+    <string name="coffee_dev">We spend nights and days making app better and better. Show your support - buy us a coffee :)</string>
+
 </resources>

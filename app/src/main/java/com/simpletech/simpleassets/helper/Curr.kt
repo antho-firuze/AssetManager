@@ -1,4 +1,4 @@
-package com.simpletech.dalwamobile.helper
+package com.simpletech.simpleassets.helper
 
 import java.text.NumberFormat
 import java.util.*
@@ -16,7 +16,7 @@ import java.util.*
 //val percentFmt = DecimalFormat(ANSI_PERCENT_FORMAT)
 
 val localeID = Locale("in", "ID")
-val currFmtID = NumberFormat.getCurrencyInstance(localeID)
+val currFmtID = NumberFormat.getCurrencyInstance(localeID)!!
 
 
 class Curr

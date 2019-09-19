@@ -1,4 +1,4 @@
-package com.simpletech.dalwamobile.helper
+package com.simpletech.simpleassets.helper
 
 import android.content.Context
 import android.util.Patterns
@@ -10,6 +10,7 @@ import java.util.regex.Pattern
 /**
  * Created by antho.firuze@gmail.com on 23/07/2019.
  */
+val f = F()
 
 class F {
 
@@ -82,7 +83,7 @@ class F {
 
     fun actionLogout(ctx: Context?) {
         session!!.isLogin = false
-        session!!.username = ""
+        session!!.userName = ""
         session!!.token = ""
     }
 
@@ -98,6 +99,12 @@ class F {
 
 //lbl_created_date.text = "${SimpleDateFormat(FORM_0_DATETIME_FORMAT).format(F().stringToDateTime(r.created_at))} WIB"
 //val DateTimeStamp = SimpleDateFormat("yyyy-MM-dd 11:00:00").format(Date())
+
+//OPEN ACTIVITY (ON ACTIVITY) ----------------------
+//startActivity(Intent(this, Main2Activity::class.java))
+//finish()
+//OPEN ACTIVITY (ON FRAGMENT) ----------------------
+//context?.startActivity(Intent(context, LoginActivity::class.java))
 
 // NOTE: (ACTIVITY)
 //=================

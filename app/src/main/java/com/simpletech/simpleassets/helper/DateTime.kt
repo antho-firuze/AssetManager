@@ -1,4 +1,4 @@
-package com.simpletech.dalwamobile.helper
+package com.simpletech.simpleassets.helper
 
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,6 +28,6 @@ const val JAVA_DATETIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'"
 //var AnsiDateTimeFmt = SimpleDateFormat(ANSI_DATETIME_FORMAT)
 
 //val NAVTimeStamp = SimpleDateFormat("yyyy-MM-dd 11:00:00").format(Date())
-val DateTimeStamp = SimpleDateFormat("yyyy-MM-dd 11:00:00").format(Date())
+val DateTimeStamp = SimpleDateFormat("yyyy-MM-dd 11:00:00").format(Date())!!
 
 class DateTime

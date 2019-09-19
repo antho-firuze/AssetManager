@@ -1,4 +1,4 @@
-package com.simpletech.dalwamobile.helper
+package com.simpletech.simpleassets.helper
 
 import android.os.SystemClock
 import android.view.View
