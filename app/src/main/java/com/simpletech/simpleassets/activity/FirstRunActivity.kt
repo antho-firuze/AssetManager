@@ -2,10 +2,10 @@ package com.simpletech.simpleassets.activity
 
 import android.content.Context
 import android.graphics.PorterDuff
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +13,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.simpletech.simpleassets.R
+import com.simpletech.simpleassets.helper.session
 import com.simpletech.simpleassets.utils.Tools
 import kotlinx.android.synthetic.main.activity_first_run.*
-import org.jetbrains.anko.support.v4.onPageChangeListener
 
 class FirstRunActivity : AppCompatActivity() {
 
@@ -43,29 +43,9 @@ class FirstRunActivity : AppCompatActivity() {
         bottomProgressDots(0)
 
         view_pager.adapter = MyViewPagerAdapter()
-        view_pager.onPageChangeListener {
-            viewPagerPageChangeListener
-        }
+        view_pager.addOnPageChangeListener(viewPagerPageChangeListener)
         view_pager.pageMargin = -60
         view_pager.offscreenPageLimit = 4
-        view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-            }
-
-            override fun onPageSelected(position: Int) {
-                if (view_pager.getCurrentItem() == about_title_array.size - 1) {
-                    btn_next.text = "Get Started"
-                } else {
-                    btn_next.text = "Next"
-                }
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {}
-        })
 
         btn_next.setOnClickListener {
             val current = view_pager.getCurrentItem() + 1
@@ -98,7 +78,7 @@ class FirstRunActivity : AppCompatActivity() {
             dotsLayout.addView(dots[i])
         }
 
-        if (dots.size > 0) {
+        if (dots.isNotEmpty()) {
             dots[current_index]?.setImageResource(R.drawable.shape_circle)
             dots[current_index]?.setColorFilter(
                 resources.getColor(R.color.light_green_600),
@@ -108,20 +88,21 @@ class FirstRunActivity : AppCompatActivity() {
     }
 
 
-    internal var viewPagerPageChangeListener: ViewPager.OnPageChangeListener =
+    private var viewPagerPageChangeListener: ViewPager.OnPageChangeListener =
         object : ViewPager.OnPageChangeListener {
 
             override fun onPageSelected(position: Int) {
                 bottomProgressDots(position)
+                if (view_pager.getCurrentItem() == about_title_array.size - 1) {
+                    btn_next.text = "Get Started"
+                } else {
+                    btn_next.text = "Next"
+                }
             }
 
-            override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {
+            override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {}
 
-            }
-
-            override fun onPageScrollStateChanged(arg0: Int) {
-
-            }
+            override fun onPageScrollStateChanged(arg0: Int) {}
         }
 
     inner class MyViewPagerAdapter : PagerAdapter() {
@@ -129,25 +110,19 @@ class FirstRunActivity : AppCompatActivity() {
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             layoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-
             val view = layoutInflater!!.inflate(R.layout.item_card_wizard, container, false)
+
             (view.findViewById(R.id.title) as TextView).text = about_title_array[position]
-            (view.findViewById(R.id.description) as TextView).text =
-                about_description_array[position]
+            (view.findViewById(R.id.description) as TextView).text = about_description_array[position]
             (view.findViewById(R.id.image) as ImageView).setImageResource(about_images_array[position])
 
             container.addView(view)
             return view
         }
 
-        override fun getCount(): Int {
-            return about_title_array.size
-        }
+        override fun getCount(): Int = about_title_array.size
 
-        override fun isViewFromObject(view: View, obj: Any): Boolean {
-            return view === obj
-        }
-
+        override fun isViewFromObject(view: View, obj: Any): Boolean = view === obj
 
         override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
             val view = `object` as View

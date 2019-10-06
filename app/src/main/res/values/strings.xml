@@ -21,4 +21,11 @@
     <string name="remove_ads">More space in your application, no more ads!</string>
     <string name="coffee_dev">We spend nights and days making app better and better. Show your support - buy us a coffee :)</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="agree">Agree</string>
+    <string name="disagree">Disagree</string>
+    <string name="more_info">More Info</string>
+
+    <string name="toggle_flash">Flash</string>
 </resources>

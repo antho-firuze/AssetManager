@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_movie"
+        android:id="@+id/navigation_asset"
         android:icon="@drawable/ic_movie"
         android:title="Assets" />
 
     <item
-        android:id="@+id/navigation_music"
+        android:id="@+id/navigation_category"
         android:icon="@drawable/ic_music"
         android:title="Category" />
 
     <item
-        android:id="@+id/navigation_books"
+        android:id="@+id/navigation_summary"
         android:icon="@drawable/ic_book"
         android:title="Summary" />
 
     <item
-        android:id="@+id/navigation_newsstand"
+        android:id="@+id/navigation_report"
         android:icon="@drawable/ic_news"
         android:title="Reports" />
 

@@ -1,12 +1,12 @@
 package com.simpletech.simpleassets.fragment
 
-
 import android.content.Context
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,26 +15,23 @@ import android.view.ViewGroup
 
 import com.simpletech.simpleassets.R
 import com.simpletech.simpleassets.helper.realm
-import com.simpletech.simpleassets.model.Items
+import com.simpletech.simpleassets.model.Category
 import com.simpletech.simpleassets.utils.Tools
 import com.simpletech.simpleassets.widget.SpacingItemDecoration
 import io.realm.Realm
 import io.realm.kotlin.where
-import kotlinx.android.synthetic.main.fragment_item_list.*
-import kotlinx.android.synthetic.main.item_grid_image_two_line.view.*
+import kotlinx.android.synthetic.main.fragment_category_list.*
+import kotlinx.android.synthetic.main.item_category.view.*
 
-/**
- * A simple [Fragment] subclass.
- */
-class ItemListFragment : Fragment() {
+class CategoryListFragment : Fragment() {
 
-    private val TAG = "ItemListFragment"
+    private val TAG = "CategoryFragment"
     lateinit var parent_view: View
-    private val datas: ArrayList<Items> = ArrayList()
+    private val datas: ArrayList<Category> = ArrayList()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item_list, container, false)
+        return inflater.inflate(R.layout.fragment_category_list, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -50,7 +47,7 @@ class ItemListFragment : Fragment() {
 //            indeterminateProgressDialog(R.string.on_progress).apply { setCancelable(false) }
 //        progressDialog.show()
 
-        var rows = realm?.where<Items>()?.findAll()
+        var rows = realm?.where<Category>()?.findAll()
         if (rows!!.isEmpty()) {
             Snackbar.make(parent_view, R.string.data_empty, Snackbar.LENGTH_SHORT).show()
 //            recycleView.visibility = View.GONE
@@ -58,16 +55,20 @@ class ItemListFragment : Fragment() {
             datas.addAll(Realm.getDefaultInstance().copyFromRealm(rows))
 
 //            recycleView.visibility = View.VISIBLE
-//            recycleView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            recycleView.layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 2)
-            recycleView.addItemDecoration(SpacingItemDecoration(2, Tools().dpToPx((activity as AppCompatActivity), 4),true))
-            recycleView.setHasFixedSize(true)
+            recycleView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+                context,
+                androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,
+                false
+            )
+//            recycleView.layoutManager = GridLayoutManager(context, 2)
+//            recycleView.addItemDecoration(SpacingItemDecoration(2, Tools().dpToPx((activity as AppCompatActivity), 4),true))
+//            recycleView.setHasFixedSize(true)
 
             val mAdapter = ListAdapter((activity as AppCompatActivity), datas)
             recycleView.adapter = mAdapter
 
             mAdapter.setOnItemClickListener(object : ListAdapter.OnItemClickListener {
-                override fun onItemClick(view: View, obj: Items, position: Int) {
+                override fun onItemClick(view: View, obj: Category, position: Int) {
                     Snackbar.make(parent_view, obj.name + " clicked", Snackbar.LENGTH_SHORT).show()
                 }
             })
@@ -76,13 +77,13 @@ class ItemListFragment : Fragment() {
 //        progressDialog.dismiss()
     }
 
-    class ListAdapter(ctx: Context, val rows: ArrayList<Items>) :
+    class ListAdapter(ctx: Context, val rows: ArrayList<Category>) :
         androidx.recyclerview.widget.RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
         var mOnItemClickListener: OnItemClickListener? = null
 
         interface OnItemClickListener {
-            fun onItemClick(view: View, obj: Items, position: Int)
+            fun onItemClick(view: View, obj: Category, position: Int)
         }
 
         fun setOnItemClickListener(mItemClickListener: OnItemClickListener) {
@@ -92,7 +93,7 @@ class ItemListFragment : Fragment() {
         override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ListViewHolder {
             return ListViewHolder(
                 LayoutInflater.from(p0.context).inflate(
-                    R.layout.item_grid_image_two_line,
+                    R.layout.item_category,
                     p0,
                     false
                 )
@@ -103,8 +104,8 @@ class ItemListFragment : Fragment() {
             val r = rows[p1]
             p0.itemView.apply {
 
-                name.text = r.name
-                brief.text = r.model
+                title.text = r.name
+//                brief.text = r.model
 
                 lyt_parent.setOnClickListener { mOnItemClickListener?.onItemClick(this, r, p1) }
             }
@@ -114,5 +115,4 @@ class ItemListFragment : Fragment() {
         class ListViewHolder(v: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(v)
 
     }
-
 }

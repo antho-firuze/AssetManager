@@ -23,7 +23,7 @@
             android:layout_height="@dimen/spacing_mxlarge"
             android:layout_gravity="center_vertical"
             android:tint="@color/grey_60"
-            app:srcCompat="@drawable/ic_event" />
+            app:srcCompat="@drawable/ic_thumb_up" />
 
         <View
             android:layout_width="@dimen/spacing_mlarge"

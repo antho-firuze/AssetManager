@@ -1,5 +1,6 @@
 package com.simpletech.simpleassets.helper
 
+import com.simpletech.simpleassets.model.Category
 import com.simpletech.simpleassets.model.Items
 import io.realm.Realm
 import io.realm.RealmModel
@@ -14,20 +15,34 @@ var realm: Realm? = null
 
 class RealmDBHelper {
 
-    fun initDatabase() {
+    fun initDatabaseFirstLaunch() {
+        deleteCategoryAll()
+        deleteItemsAll()
 
-//        if (session!!.isFirstLaunch) {
-//            session!!.isFirstLaunch = false
-
-        var rows = realm?.where<Items>()?.findAll()
+        var rows = realm?.where<Category>()?.findAll()
         if (rows!!.isEmpty()) {
-            insertItem("Item1\nitem 1 item 1 item 1 item 1", "Item model 1")
+            insertCategory("Category1")
+            insertCategory("Category2")
+            insertCategory("Category3")
+            insertCategory("Category4")
+            insertCategory("Category5")
+        }
+
+        var rows1 = realm?.where<Items>()?.findAll()
+        if (rows1!!.isEmpty()) {
+            insertItem("Item1", "Item model 1")
             insertItem("Item2", "Item model 2")
             insertItem("Item3", "Item model 3")
             insertItem("Item4", "Item model 4")
             insertItem("Item5", "Item model 5")
         }
-//        }
+    }
+
+    fun insertCategory(s: String) {
+        realm?.executeTransaction {
+            val obj = realm!!.createObject(Category::class.java)
+            obj.name = s
+        }
     }
 
     fun insertItem(s: String, s1: String) {
@@ -35,6 +50,12 @@ class RealmDBHelper {
             val obj = realm!!.createObject(Items::class.java)
             obj.name = s
             obj.model = s1
+        }
+    }
+
+    fun deleteCategoryAll() {
+        realm?.executeTransaction {
+            realm!!.where(Category::class.java).findAll().deleteAllFromRealm()
         }
     }
 
